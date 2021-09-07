@@ -1,0 +1,24 @@
+{% extends 'base.html' %} 
+
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+<h1 class="display text-center">Adoption Center</h1> 
+<a href="/pets/new"><button class="btn btn-success float-end">Add Pet</button></a>
+<div class="container">
+    <div class="row">
+        {% for pet in pets %}
+        <div class="col-3 bg-secondary p-1 border border-white rounded">
+            <h2 class="display text-white text-center" >{{pet.name}}</h2>
+            <div class="btn btn-info mb-1">Available: {{pet.available}}</div>
+            <a href="/pets/{{pet.id}}/edit"><div class="btn btn-success mb-1">Edit</div></a>
+            {% if pet.photo_url %}
+            <img src="{{pet.photo_url}}" class="img-fluid">
+            {% endif %}
+        </div>
+        
+        
+        {% endfor %} 
+    </div>
+  </div>
+{% endblock %}

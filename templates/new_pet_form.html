@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Add New Pet {% endblock%}
+
+{% block content %}
+<div class="container position-relative">
+<h1 class="display text-center mb-3">New Pet!</h1>
+<form id="pet-add-form" method="POST" class="position-absolute start-50 translate-middle-x">
+    {{ form.hidden_tag() }} <!--add type=hidden form fields -->
+  
+    {% for field in form
+           if field.widget.input_type != 'hidden' %}
+    <div class="form-group">
+      <p>
+        {{ field.label }}
+        {{ field(class_='form-control') }}
+  
+        {% for error in field.errors %}
+          {{ error }}
+        {% endfor %}
+      </p>
+    </div>
+    {% endfor %}
+  
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+{% endblock %}
+
